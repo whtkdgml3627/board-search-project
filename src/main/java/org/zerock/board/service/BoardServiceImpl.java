@@ -7,9 +7,9 @@ package org.zerock.board.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.zerock.board.dto.BoardListDTO;
-import org.zerock.board.dto.PageRequestDTO;
-import org.zerock.board.dto.PageResponseDTO;
+import org.zerock.board.dto.board.BoardListDTO;
+import org.zerock.board.dto.paging.PageRequestDTO;
+import org.zerock.board.dto.paging.PageResponseDTO;
 import org.zerock.board.mappers.BoardMapper;
 
 import lombok.RequiredArgsConstructor;

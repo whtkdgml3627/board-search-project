@@ -1,4 +1,4 @@
-package org.zerock.board.dto;
+package org.zerock.board.dto.paging;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -60,7 +60,7 @@ public class PageRequestDTO {
 
   //다음페이지를 위한 count
   public int getCountEnd(){
-    int temp = (int)(Math.ceil(this.page/10.0)) * (10 * this.size);
+    int temp = (int)(Math.ceil(this.page/10.0)) * (10 * size);
     return temp + 1;
   }
 

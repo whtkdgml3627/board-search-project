@@ -3,7 +3,7 @@ package org.zerock.board.service;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.zerock.board.dto.PageRequestDTO;
+import org.zerock.board.dto.paging.PageRequestDTO;
 import org.zerock.board.mappers.BoardMapper;
 
 import lombok.extern.log4j.Log4j2;

@@ -1,4 +1,4 @@
-package org.zerock.board.dto;
+package org.zerock.board.dto.paging;
 /*
  * page 반환해주는 DTO
  * List 형식과 total 선언 필요

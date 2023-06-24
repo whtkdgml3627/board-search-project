@@ -4,7 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.zerock.board.dto.PageRequestDTO;
+import org.zerock.board.dto.board.BoardListDTO;
+import org.zerock.board.dto.paging.PageRequestDTO;
+import org.zerock.board.dto.paging.PageResponseDTO;
 import org.zerock.board.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -23,7 +25,10 @@ public class BoardController {
   public void getList(
     PageRequestDTO pageRequestDTO, Model model
   ){
-    model.addAttribute("board", boardService.list(pageRequestDTO));
+    log.info("get | list.....................");
+    PageResponseDTO<BoardListDTO> list = boardService.list(pageRequestDTO);
+
+    model.addAttribute("board", list);
   }
   
 }

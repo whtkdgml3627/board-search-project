@@ -2,8 +2,8 @@ package org.zerock.board.mappers;
 
 import java.util.List;
 
-import org.zerock.board.dto.BoardListDTO;
-import org.zerock.board.dto.PageRequestDTO;
+import org.zerock.board.dto.board.BoardListDTO;
+import org.zerock.board.dto.paging.PageRequestDTO;
 
 public interface BoardMapper {
   

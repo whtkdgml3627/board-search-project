@@ -6,9 +6,9 @@ package org.zerock.board.service;
  */
 
 import org.springframework.transaction.annotation.Transactional;
-import org.zerock.board.dto.BoardListDTO;
-import org.zerock.board.dto.PageRequestDTO;
-import org.zerock.board.dto.PageResponseDTO;
+import org.zerock.board.dto.board.BoardListDTO;
+import org.zerock.board.dto.paging.PageRequestDTO;
+import org.zerock.board.dto.paging.PageResponseDTO;
 
 @Transactional
 public interface BoardService {
