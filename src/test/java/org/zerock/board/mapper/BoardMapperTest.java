@@ -3,6 +3,7 @@ package org.zerock.board.mapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.zerock.board.dto.board.BoardRegisterDTO;
 import org.zerock.board.dto.paging.PageRequestDTO;
 import org.zerock.board.mappers.BoardMapper;
 
@@ -28,6 +29,20 @@ public class BoardMapperTest {
 
     //total
     boardMapper.listCount(list);
+  }
+
+  //register test
+  @Test
+  public void testRegister(){
+    BoardRegisterDTO dto = BoardRegisterDTO.builder()
+    .title("등록 매퍼테스트")
+    .content("등록 매퍼 테스트")
+    .writer("등록자")
+    .build();
+
+    log.info("-----------------------------------------");
+    log.info("-----------------------------------------");
+    boardMapper.register(dto);
   }
 
 }

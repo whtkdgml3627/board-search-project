@@ -14,7 +14,7 @@
   limit #{skip}, #{size}
   </select>
 
-  <!-- 게시판 다음버튼  total -->
+  <!-- 페이징 다음버튼  total -->
   <select id="listCount" resultType="long">
   select count(*)
   from
@@ -22,6 +22,14 @@
   where bno > 0
   limit #{countEnd}) board
   </select>
+
+  <!-- 등록 -->
+  <insert id="register">
+  insert into tbl_board
+  (title, content, writer)
+  values (#{title}, #{content}, #{writer})
+  </insert>
+  
 
 
 </mapper>

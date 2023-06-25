@@ -3,8 +3,10 @@ package org.zerock.board.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.board.dto.board.BoardListDTO;
+import org.zerock.board.dto.board.BoardRegisterDTO;
 import org.zerock.board.dto.paging.PageRequestDTO;
 import org.zerock.board.dto.paging.PageResponseDTO;
 import org.zerock.board.service.BoardService;
@@ -20,7 +22,7 @@ public class BoardController {
 
   private final BoardService boardService;
 
-  //list
+  //리스트
   @GetMapping("list")
   public void getList(
     PageRequestDTO pageRequestDTO, Model model
@@ -30,5 +32,23 @@ public class BoardController {
 
     model.addAttribute("board", list);
   }
+
+  //등록
+  //get
+  @GetMapping("register")
+  public void getRegister(){
+    log.info("get | register.....................");
+  }
+
+  //post
+  @PostMapping("register")
+  public String postRegister(BoardRegisterDTO registerDTO){
+    //등록 서비스
+    boardService.register(registerDTO);
+
+    return "redirect:/board/list";
+  }
+
+
   
 }
