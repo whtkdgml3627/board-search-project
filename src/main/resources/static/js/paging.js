@@ -30,9 +30,10 @@ function makePages(page, size, total){
   }
 
   //total이 size*10 을 나눈 나머지가 1이면 노출
-  total % (size * 10) == 1 ? pagingResult += `<a href="${temp}" class="btn btn-primary">></a>` : ""
+  total - (Math.ceil(page / 10) * (10 * size)) == 1 ? pagingResult += `<a href="${temp}" class="btn btn-primary">></a>` : ""
   //console.log("페이징 동적 생성 html : ", pagingResult);
 
+  console.log(startNum, temp, total)
   //return으로 html 반환
   return pagingResult
 }

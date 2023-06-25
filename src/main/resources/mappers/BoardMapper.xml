@@ -10,6 +10,20 @@
   select bno, title, content, writer, dueDate
   from tbl_board
   where bno > 0 and status = true
+    <if test="keyword != null">
+      and
+      <if test="type == 'title' or type == ''">
+        title like concat('%', #{keyword}, '%')
+      </if>
+      <if test="type == 'content' or type == ''">
+        <if test="type == ''">or</if>
+        content like concat('%', #{keyword}, '%')
+      </if>
+      <if test="type == 'writer' or type == ''">
+        <if test="type == ''">or</if>
+        writer like concat('%', #{keyword}, '%')
+      </if>
+    </if>
   order by bno desc
   limit #{skip}, #{size}
   </select>
@@ -20,6 +34,20 @@
   from
   (select bno from tbl_board
   where bno > 0
+    <if test="keyword != null">
+      and
+      <if test="type == 'title' or type == ''">
+        title like concat('%', #{keyword}, '%')
+      </if>
+      <if test="type == 'content' or type == ''">
+        <if test="type == ''">or</if>
+        content like concat('%', #{keyword}, '%')
+      </if>
+      <if test="type == 'writer' or type == ''">
+        <if test="type == ''">or</if>
+        writer like concat('%', #{keyword}, '%')
+      </if>
+    </if>
   limit #{countEnd}) board
   </select>
 

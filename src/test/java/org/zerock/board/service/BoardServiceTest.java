@@ -22,7 +22,7 @@ public class BoardServiceTest {
   //리스트 test
   @Test
   public void testList(){
-    PageRequestDTO list = PageRequestDTO.builder().build();
+    PageRequestDTO list = PageRequestDTO.builder().type("").keyword("수정").build();
 
     log.info("-----------------------------------------");
     log.info("-----------------------------------------");

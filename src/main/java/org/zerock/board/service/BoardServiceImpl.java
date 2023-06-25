@@ -26,8 +26,11 @@ public class BoardServiceImpl implements BoardService {
   //리스트
   @Override
   public PageResponseDTO<BoardListDTO> list(PageRequestDTO pageRequestDTO) {
+    //리스트 담아주기
     List<BoardListDTO> list = boardMapper.list(pageRequestDTO);
+    //total 리스트 총 개수
     long total = boardMapper.listCount(pageRequestDTO);
+
 
     return PageResponseDTO.<BoardListDTO>withAll()
       .list(list)

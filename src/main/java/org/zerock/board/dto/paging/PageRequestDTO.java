@@ -1,5 +1,8 @@
 package org.zerock.board.dto.paging;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,7 +36,10 @@ public class PageRequestDTO {
   @Builder.Default
   private int size = 10; //사이즈
 
-  private String link;   //page,size합치기
+  private String type;    //검색종류
+  private String keyword; //검색어
+
+  private String link;   //검색조건, 페이지, 사이즈 통합
 
   //페이지 번호
   public void setPage(int page){
@@ -71,8 +77,23 @@ public class PageRequestDTO {
       //문자열 합치기
       StringBuilder strBuilder = new StringBuilder();
 
+      //페이지,사이즈 append
       strBuilder.append("page=" + this.page);
       strBuilder.append("&size=" + this.size);
+
+      //검색타입
+      if(type != null && type.length() > 0){
+        strBuilder.append("&type=" + this.type);
+      }
+
+      //검색어
+      if(keyword != null){
+        try {
+          strBuilder.append("&keyword=" + URLEncoder.encode(keyword,"UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+          e.printStackTrace();
+        }
+      }
 
       //toString으로 String전달
       link = strBuilder.toString();
