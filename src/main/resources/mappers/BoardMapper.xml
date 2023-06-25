@@ -29,6 +29,13 @@
   (title, content, writer)
   values (#{title}, #{content}, #{writer})
   </insert>
+
+  <!-- 상세 -->
+  <select id="read" resultType="BoardReadDTO">
+  select title, content, writer, updateDate, status
+  from tbl_board
+  where bno = #{bno}
+  </select>
   
 
 

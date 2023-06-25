@@ -17,7 +17,7 @@ public class BoardMapperTest {
   @Autowired(required = false)
   private BoardMapper boardMapper;
   
-  //list test
+  //리스트 test
   @Test
   public void testList(){
     PageRequestDTO list = PageRequestDTO.builder().build();
@@ -31,7 +31,7 @@ public class BoardMapperTest {
     boardMapper.listCount(list);
   }
 
-  //register test
+  //등록 test
   @Test
   public void testRegister(){
     BoardRegisterDTO dto = BoardRegisterDTO.builder()
@@ -43,6 +43,15 @@ public class BoardMapperTest {
     log.info("-----------------------------------------");
     log.info("-----------------------------------------");
     boardMapper.register(dto);
+  }
+
+  //상세 test
+  @Test
+  public void testRead(){
+
+    log.info("-----------------------------------------");
+    log.info("-----------------------------------------");
+    log.info(boardMapper.read(720893));
   }
 
 }

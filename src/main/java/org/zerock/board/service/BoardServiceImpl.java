@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.zerock.board.dto.board.BoardListDTO;
+import org.zerock.board.dto.board.BoardReadDTO;
 import org.zerock.board.dto.board.BoardRegisterDTO;
 import org.zerock.board.dto.paging.PageRequestDTO;
 import org.zerock.board.dto.paging.PageResponseDTO;
@@ -38,6 +39,12 @@ public class BoardServiceImpl implements BoardService {
   @Override
   public void register(BoardRegisterDTO boardRegisterDTO) {
     boardMapper.register(boardRegisterDTO);
+  }
+
+  //상세
+  @Override
+  public BoardReadDTO read(Integer bno) {
+    return boardMapper.read(bno);
   }
   
 }

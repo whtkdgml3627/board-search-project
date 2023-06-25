@@ -34,7 +34,7 @@
               <th scope="col">날짜</th>
             </tr>
           </thead>
-          <tbody class="boardDetail">
+          <tbody class="boardRead">
             <tr th:each="list : ${board.list}" th:data-bno="${list.bno}">
               <td>[[${list.bno}]]</td>
               <td>[[${list.title}]]</td>
@@ -68,7 +68,7 @@
     const pageObj = document.querySelector("input[name=page]")
     const typeObj = document.querySelector("select[name=type]")
     const keywordObj = document.querySelector("input[name=keyword]")
-    const boardDetail = document.querySelector(".boardDetail")
+    const boardRead = document.querySelector(".boardRead")
     //page,size 값 변수에 저장
     const {page, size, link} = [[${pageRequestDTO}]]
     //total(101) 값 저장
@@ -109,7 +109,7 @@
 
     }, false)
 
-    boardDetail.addEventListener("click", e => {
+    boardRead.addEventListener("click", e => {
       e.preventDefault()
       e.stopPropagation()
 
@@ -120,8 +120,8 @@
       const bno = target.closest("tr").getAttribute("data-bno")
       //console.log(bno)
 
-      //쿼리스트링 그대로 detail페이지로
-      actionForm.setAttribute("action", `/board/detail/${bno}`)
+      //쿼리스트링 그대로 read페이지로
+      actionForm.setAttribute("action", `/board/read/${bno}`)
       actionForm.submit()
     }, false)
 

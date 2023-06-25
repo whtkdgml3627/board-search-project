@@ -12,9 +12,11 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class BoardServiceTest {
 
+  //의존성 주입
   @Autowired(required = false)
   private BoardService boardService;
 
+  //리스트 test
   @Test
   public void testList(){
     PageRequestDTO list = PageRequestDTO.builder().build();
@@ -24,6 +26,7 @@ public class BoardServiceTest {
     log.info(boardService.list(list));
   }
 
+  //등록 test
   @Test
   public void testRegister(){
     BoardRegisterDTO dto = BoardRegisterDTO.builder()
@@ -35,6 +38,15 @@ public class BoardServiceTest {
     log.info("-----------------------------------------");
     log.info("-----------------------------------------");
     boardService.register(dto);
+  }
+
+  //상세 test
+  @Test
+  public void testRead(){
+    
+    log.info("-----------------------------------------");
+    log.info("-----------------------------------------");
+    log.info(boardService.read(720893));
   }
   
 }

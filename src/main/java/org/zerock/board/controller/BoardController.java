@@ -3,9 +3,11 @@ package org.zerock.board.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.board.dto.board.BoardListDTO;
+import org.zerock.board.dto.board.BoardReadDTO;
 import org.zerock.board.dto.board.BoardRegisterDTO;
 import org.zerock.board.dto.paging.PageRequestDTO;
 import org.zerock.board.dto.paging.PageResponseDTO;
@@ -47,6 +49,20 @@ public class BoardController {
     boardService.register(registerDTO);
 
     return "redirect:/board/list";
+  }
+
+  //상세
+  //get
+  @GetMapping("read/{bno}")
+  public String getRead(
+    @PathVariable("bno") Integer bno, PageRequestDTO pageRequestDTO, Model model
+  ){
+    log.info("get | read.....................");
+    BoardReadDTO readDTO = boardService.read(bno);
+
+    model.addAttribute("read", readDTO);
+    
+    return "/board/read";
   }
 
 
