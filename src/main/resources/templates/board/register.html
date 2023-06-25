@@ -54,17 +54,17 @@
       //console.log(frm.title.value);
       if(frm.title.value == "") {
         modalPop.innerHTML = "제목을 입력해주세요."
-        modalView.show();
+        modalView.show()
       }else if(frm.content.value == "") {
         modalPop.innerHTML = "내용을 입력해주세요."
-        modalView.show();
+        modalView.show()
       }else if(frm.writer.value == "") {
         modalPop.innerHTML = "작성자를 입력해주세요."
         modalView.show()
       }else {
         frm.submit()
       }
-    });
+    }, false)
   </script>
 </body>
 </html>

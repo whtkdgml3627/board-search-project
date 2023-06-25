@@ -3,6 +3,9 @@ package org.zerock.board.mapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
+import org.zerock.board.dto.board.BoardDTO;
 import org.zerock.board.dto.board.BoardRegisterDTO;
 import org.zerock.board.dto.paging.PageRequestDTO;
 import org.zerock.board.mappers.BoardMapper;
@@ -52,6 +55,30 @@ public class BoardMapperTest {
     log.info("-----------------------------------------");
     log.info("-----------------------------------------");
     log.info(boardMapper.read(720893));
+  }
+
+  //삭제 test
+  @Test
+  @Transactional
+  public void testDelete(){
+    
+    log.info("-----------------------------------------");
+    log.info("-----------------------------------------");
+    log.info(boardMapper.delete(720877));
+  }
+
+  //수정 test
+  @Test
+  public void testModify(){
+    
+    BoardDTO boardDTO = BoardDTO.builder()
+    .title("게시판수정")
+    .content("수정정정정")
+    .build();
+
+    log.info("-----------------------------------------");
+    log.info("-----------------------------------------");
+    log.info(boardMapper.modify(boardDTO, 720892));
   }
 
 }

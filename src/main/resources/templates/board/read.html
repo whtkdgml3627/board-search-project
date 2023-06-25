@@ -28,18 +28,16 @@
           <a th:href="@{|/board/modify/${bno}?${pageRequestDTO.link}|}" class="btn btn-info text-white btnModify">수정</a>
         </div>
       </div>
-      <div class="modal" tabindex="-1" role="dialog">
-        <form method="post" class="actionForm">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-body">정말 삭제 하시겠습니까?</div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger btnRemoveModal" data-bs-dismiss="modal">확인</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-            </div>
+    </div>
+
+    <div class="modal alertModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">[[${message}]]번 게시물이 수정 되었습니다.</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
           </div>
         </div>
-        </form>
       </div>
     </div>
 
@@ -47,12 +45,16 @@
   <script layout:fragment="script" th:inline="javascript">
     //변수, 선택자
     const {bno, status} = [[${read}]]
-    const actionForm = document.querySelector(".actionForm")
+    const alertModal = new bootstrap.Modal(document.querySelector(".alertModal"))
 
     //삭제된 게시물은 list로 return처리
     if(!status){
       alert("삭제된 게시물 입니다.");
       window.location.href = "http://" + window.location.host + "/board/list"
+    }
+
+    if([[${message}]] != null){
+      alertModal.show()
     }
   </script>
 </body>

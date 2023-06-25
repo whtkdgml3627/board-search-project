@@ -52,6 +52,18 @@
         </div>
       </div>
     </div>
+
+    <div class="modal alertModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">[[${message}]]번 게시물이 삭제 되었습니다.</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <form action="/todo/list" method="get" class="actionForm">
       <input type="hidden" name="page" th:value="${pageRequestDTO.page}">
       <input type="hidden" name="size" th:value="${pageRequestDTO.size}">
@@ -69,6 +81,7 @@
     const typeObj = document.querySelector("select[name=type]")
     const keywordObj = document.querySelector("input[name=keyword]")
     const boardRead = document.querySelector(".boardRead")
+    const alertModal = new bootstrap.Modal(document.querySelector(".alertModal"))
     //page,size 값 변수에 저장
     const {page, size, link} = [[${pageRequestDTO}]]
     //total(101) 값 저장
@@ -94,7 +107,6 @@
       pageObj.value = pageNum
 
       //actionForm submit
-      //typeObj.value = "test"
       if(typeObj.options[typeObj.selectedIndex].value !== "" || keywordObj.value !== ""){
         pageHidden.innerHTML += `<input type="hidden" name="page" value="${page}">`
         pageHidden.innerHTML += `<input type="hidden" name="size" value="${size}">`
@@ -103,9 +115,6 @@
         actionForm.setAttribute("action", "/board/list")
         actionForm.submit()
       }
-      // else{
-      
-      // }
 
     }, false)
 
@@ -121,9 +130,20 @@
       //console.log(bno)
 
       //쿼리스트링 그대로 read페이지로
-      actionForm.setAttribute("action", `/board/read/${bno}`)
-      actionForm.submit()
+      if(typeObj.options[typeObj.selectedIndex].value !== "" || keywordObj.value !== ""){
+        pageHidden.innerHTML += `<input type="hidden" name="page" value="${page}">`
+        pageHidden.innerHTML += `<input type="hidden" name="size" value="${size}">`
+        searchForm.setAttribute("action", `/board/read/${bno}`)
+        searchForm.submit()
+      }else{
+        actionForm.setAttribute("action", `/board/read/${bno}`)
+        actionForm.submit()
+      }
     }, false)
+
+    if([[${message}]] != null){
+      alertModal.show()
+    }
 
   </script>
   

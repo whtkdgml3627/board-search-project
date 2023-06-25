@@ -31,12 +31,25 @@
   </insert>
 
   <!-- 상세 -->
-  <select id="read" resultType="BoardReadDTO">
-  select title, content, writer, updateDate, status
+  <select id="read" resultType="BoardDTO">
+  select bno, title, content, writer, updateDate, status
   from tbl_board
   where bno = #{bno}
   </select>
-  
 
+  <!-- 삭제 -->
+  <update id="delete">
+  update tbl_board
+  set
+    title = '', content = '', writer = '', dueDate = null, updateDate = now(), status = false
+  where bno = #{bno}
+  </update>
+  
+  <update id="modify">
+  update tbl_board
+  set
+    title = #{br.title}, content = #{br.content}, updateDate = now()
+  where bno = #{bno}
+  </update>
 
 </mapper>

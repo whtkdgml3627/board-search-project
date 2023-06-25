@@ -7,7 +7,7 @@ package org.zerock.board.service;
 
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.board.dto.board.BoardListDTO;
-import org.zerock.board.dto.board.BoardReadDTO;
+import org.zerock.board.dto.board.BoardDTO;
 import org.zerock.board.dto.board.BoardRegisterDTO;
 import org.zerock.board.dto.paging.PageRequestDTO;
 import org.zerock.board.dto.paging.PageResponseDTO;
@@ -22,6 +22,12 @@ public interface BoardService {
   void register(BoardRegisterDTO boardRegisterDTO);
 
   //상세
-  BoardReadDTO read(Integer bno);
+  BoardDTO read(Integer bno);
+
+  //삭제
+  void delete(Integer bno);
+
+  //수정
+  void modify(BoardDTO boardDTO, Integer bno);
 
 }

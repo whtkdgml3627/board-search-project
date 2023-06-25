@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BoardReadDTO {
+public class BoardDTO {
   //변수
+  private Integer bno;        //pk
   private String title;       //제목
   private String content;     //내용
   private String writer;      //작성자
