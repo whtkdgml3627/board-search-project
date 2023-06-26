@@ -28,6 +28,6 @@ public interface BoardService {
   void delete(Integer bno);
 
   //수정
-  void modify(BoardDTO boardDTO, Integer bno);
+  void modify(BoardDTO boardDTO);
 
 }

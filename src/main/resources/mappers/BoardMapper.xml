@@ -10,17 +10,17 @@
   select bno, title, content, writer, dueDate
   from tbl_board
   where bno > 0 and status = true
-    <if test="keyword != null">
+    <if test="keyword != null and type != ''">
       and
-      <if test="type == 'title' or type == ''">
+      <if test="type == 'title' or type == 'all'">
         title like concat('%', #{keyword}, '%')
       </if>
-      <if test="type == 'content' or type == ''">
-        <if test="type == ''">or</if>
+      <if test="type == 'content' or type == 'all'">
+        <if test="type == 'all'">or</if>
         content like concat('%', #{keyword}, '%')
       </if>
-      <if test="type == 'writer' or type == ''">
-        <if test="type == ''">or</if>
+      <if test="type == 'writer' or type == 'all'">
+        <if test="type == 'all'">or</if>
         writer like concat('%', #{keyword}, '%')
       </if>
     </if>
@@ -34,17 +34,17 @@
   from
   (select bno from tbl_board
   where bno > 0
-    <if test="keyword != null">
+    <if test="keyword != null and type != ''">
       and
-      <if test="type == 'title' or type == ''">
+      <if test="type == 'title' or type == 'all'">
         title like concat('%', #{keyword}, '%')
       </if>
-      <if test="type == 'content' or type == ''">
-        <if test="type == ''">or</if>
+      <if test="type == 'content' or type == 'all'">
+        <if test="type == 'all'">or</if>
         content like concat('%', #{keyword}, '%')
       </if>
-      <if test="type == 'writer' or type == ''">
-        <if test="type == ''">or</if>
+      <if test="type == 'writer' or type == 'all'">
+        <if test="type == 'all'">or</if>
         writer like concat('%', #{keyword}, '%')
       </if>
     </if>
@@ -76,7 +76,7 @@
   <update id="modify">
   update tbl_board
   set
-    title = #{br.title}, content = #{br.content}, updateDate = now()
+    title = #{title}, content = #{content}, updateDate = now()
   where bno = #{bno}
   </update>
 

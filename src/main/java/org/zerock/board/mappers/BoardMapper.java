@@ -26,9 +26,6 @@ public interface BoardMapper {
   int delete(Integer bno);
 
   //수정
-  int modify(
-    @Param("br") BoardDTO boardDTO,
-    @Param("bno") Integer bno
-  );
+  int modify(BoardDTO boardDTO);
 
 }

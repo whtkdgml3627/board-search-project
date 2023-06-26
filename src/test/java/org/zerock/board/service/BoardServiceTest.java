@@ -73,7 +73,7 @@ public class BoardServiceTest {
 
     log.info("-----------------------------------------");
     log.info("-----------------------------------------");
-    boardService.modify(boardDTO, 720892);
+    boardService.modify(boardDTO);
   }
   
 }

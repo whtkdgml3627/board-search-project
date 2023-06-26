@@ -58,8 +58,8 @@ public class BoardServiceImpl implements BoardService {
 
   //수정
   @Override
-  public void modify(BoardDTO boardDTO, Integer bno) {
-    boardMapper.modify(boardDTO, bno);
+  public void modify(BoardDTO boardDTO) {
+    boardMapper.modify(boardDTO);
   }
 
 }

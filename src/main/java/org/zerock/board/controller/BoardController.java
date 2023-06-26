@@ -84,12 +84,12 @@ public class BoardController {
   //post
   @PostMapping("modify/{bno}")
   public String postModify(
-    @PathVariable("bno") Integer bno, BoardDTO boardDTO, RedirectAttributes rttr
+    BoardDTO boardDTO, RedirectAttributes rttr
   ){
-    boardService.modify(boardDTO, bno);
-    rttr.addFlashAttribute("message", bno);
+    boardService.modify(boardDTO);
+    rttr.addFlashAttribute("message", boardDTO.getBno() + "번 게시물이 수정되었습니다.");
     
-    return "redirect:/board/read/" + bno;
+    return "redirect:/board/read/" +  boardDTO.getBno();
   }
   // /수정
 
@@ -100,7 +100,7 @@ public class BoardController {
     @PathVariable("bno") Integer bno, RedirectAttributes rttr
   ){
     boardService.delete(bno);
-    rttr.addFlashAttribute("message", bno);
+    rttr.addFlashAttribute("message", bno + "번 게시물이 삭제되었습니다.");
 
     return "redirect:/board/list";
   }

@@ -79,7 +79,7 @@ public class BoardMapperTest {
 
     log.info("-----------------------------------------");
     log.info("-----------------------------------------");
-    log.info(boardMapper.modify(boardDTO, 720892));
+    log.info(boardMapper.modify(boardDTO));
   }
 
 }
